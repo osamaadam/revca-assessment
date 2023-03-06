@@ -5,10 +5,19 @@
 }
 
 canvas {
-  background: transparent;
   position: absolute;
+  background: transparent;
+  z-index: 1;
 }
 
 .container {
+  isolation: isolate;
+  position: relative;
   height: 100dvh;
+  z-index: 1;
+}
+
+.img {
+  position: relative;
+  z-index: -1;
 }

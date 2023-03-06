@@ -24,17 +24,23 @@ export default function useCanvas(ref: RefObject<HTMLCanvasElement>) {
     setDrawStart(point);
   }
 
-  function drawRectEnd(point: CanvasPoint) {
+  function drawRectEnd(point: CanvasPoint, stroke?: string, fill?: string) {
     if (!ctx) return;
     const width = point.x - drawStart.x;
     const height = point.y - drawStart.y;
 
     const randomIndex = Math.floor(Math.random() * COLORS.length);
 
-    ctx.strokeStyle = COLORS[randomIndex];
-    ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-    ctx.fillRect(drawStart.x, drawStart.y, width, height);
+    ctx.strokeStyle = stroke ?? COLORS[randomIndex];
+    //ctx.fillStyle = fill ?? "rgba(0, 0, 0, 0)";
+    //ctx.fillRect(drawStart.x, drawStart.y, width, height);
     ctx.strokeRect(drawStart.x, drawStart.y, width, height);
+    console.log({
+      0: { x: drawStart.x, y: drawStart.y },
+      1: { x: drawStart.x + width, y: drawStart.y },
+      2: { x: drawStart.x + width, y: drawStart.y + height },
+      4: { x: drawStart.x, y: drawStart.y + height },
+    });
   }
 
   function maxmize() {
