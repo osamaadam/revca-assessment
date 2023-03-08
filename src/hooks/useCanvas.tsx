@@ -32,14 +32,18 @@ export default function useCanvas(ref: RefObject<HTMLCanvasElement>) {
     const randomIndex = Math.floor(Math.random() * COLORS.length);
 
     ctx.strokeStyle = stroke ?? COLORS[randomIndex];
-    //ctx.fillStyle = fill ?? "rgba(0, 0, 0, 0)";
-    //ctx.fillRect(drawStart.x, drawStart.y, width, height);
+    ctx.fillStyle = fill ?? "rgba(0, 0, 0, 0.2)";
+    ctx.fillRect(drawStart.x, drawStart.y, width, height);
     ctx.strokeRect(drawStart.x, drawStart.y, width, height);
+    printCoords(drawStart.x, drawStart.y, width, height);
+  }
+
+  function printCoords(x: number, y: number, width: number, height: number) {
     console.log({
-      0: { x: drawStart.x, y: drawStart.y },
-      1: { x: drawStart.x + width, y: drawStart.y },
-      2: { x: drawStart.x + width, y: drawStart.y + height },
-      4: { x: drawStart.x, y: drawStart.y + height },
+      0: { x, y },
+      1: { x: x + width, y },
+      2: { x: x + width, y: y + height },
+      3: { x, y: y + height },
     });
   }
 

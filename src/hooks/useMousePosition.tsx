@@ -6,7 +6,8 @@ export default function useMousePosition(ref: RefObject<HTMLCanvasElement>) {
 
   useEffect(() => {
     const cb = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      // @ts-ignore
+      setPosition({ x: e.layerX, y: e.layerY });
     };
 
     ref.current?.addEventListener("mousemove", cb);
