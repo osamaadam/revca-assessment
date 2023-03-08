@@ -45,8 +45,10 @@ function App() {
       <article className="canvas-container">
         <canvas
           ref={canvasRef}
-          onMouseDownCapture={handleMouseDown}
-          onMouseUpCapture={handleMouseUp}
+          onTouchStart={handleMouseDown}
+          onMouseDown={handleMouseDown}
+          onTouchEnd={handleMouseUp}
+          onMouseUp={handleMouseUp}
         />
         <img
           onLoad={(ev) => {
