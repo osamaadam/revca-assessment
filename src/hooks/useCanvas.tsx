@@ -39,12 +39,12 @@ export default function useCanvas(ref: RefObject<HTMLCanvasElement>) {
   }
 
   function printCoords(x: number, y: number, width: number, height: number) {
-    console.log({
-      0: { x, y },
-      1: { x: x + width, y },
-      2: { x: x + width, y: y + height },
-      3: { x, y: y + height },
-    });
+    console.log([
+      { x, y },
+      { x: x + width, y },
+      { x: x + width, y: y + height },
+      { x, y: y + height },
+    ]);
   }
 
   function clear() {
