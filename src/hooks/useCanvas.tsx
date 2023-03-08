@@ -47,8 +47,15 @@ export default function useCanvas(ref: RefObject<HTMLCanvasElement>) {
     });
   }
 
+  function clear() {
+    if (!ctx || !ref.current) return;
+
+    ctx.clearRect(0, 0, ref.current.width, ref.current.height);
+  }
+
   function maxmize() {
     if (ref.current) {
+      clear();
       ref.current.width = window.innerWidth;
       ref.current.height = window.innerHeight;
     }
@@ -56,9 +63,10 @@ export default function useCanvas(ref: RefObject<HTMLCanvasElement>) {
 
   function resize(height: number, width: number) {
     if (!ref.current) return;
+    clear();
     ref.current.width = width;
     ref.current.height = height;
   }
 
-  return { drawRectStart, drawRectEnd, maxmize, resize };
+  return { drawRectStart, drawRectEnd, maxmize, resize, clear };
 }
